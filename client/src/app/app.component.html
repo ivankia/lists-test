@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="left-pane">
+    <h2>All Items</h2>
+    <input type="text" [(ngModel)]="leftFilter" (input)="onLeftFilterChange()" placeholder="Filter by ID">
+    <br>
+    <input type="number" [(ngModel)]="newId" placeholder="New ID">
+    <button (click)="addItem()">Add Item</button>
+    <div class="items-list" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [infiniteScrollDisabled]="loadingLeft || noMoreLeft" [scrollWindow]="false" [immediateCheck]="false" (scrolled)="onLeftScroll()">
+      <div *ngFor="let item of leftItems" class="item" (click)="selectItem(item)">{{ item }}</div>
+    </div>
+  </div>
+  <div class="right-pane">
+    <h2>Selected Items</h2>
+    <input type="text" [(ngModel)]="rightFilter" (input)="onRightFilterChange()" placeholder="Filter by ID">
+    <div class="items-list" cdkDropList (cdkDropListDropped)="drop($event)" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [infiniteScrollDisabled]="loadingRight || noMoreRight" [scrollWindow]="false" [immediateCheck]="false" (scrolled)="onRightScroll()">
+      <div *ngFor="let item of rightItems" cdkDrag class="item">{{ item.id }}</div>
+    </div>
+  </div>
+</div>
