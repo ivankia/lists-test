@@ -1,4 +1,22 @@
-run client: cd client && ng serve
+## Установка
 
+ ```bash
+cd client && npm i --force && ng build
 
-run server: cd server && npm run start
+cd ..
+
+cd server && npm i
+```
+
+## Запуск
+Клиент
+
+ ```bash
+ng serve
+```
+
+Сервер
+
+ ```bash
+npm run start
+```
